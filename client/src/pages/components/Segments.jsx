@@ -152,18 +152,13 @@ const Segments = () => {
         },
         body: JSON.stringify(data),
       });
-  
-      // Check if the response status is OK
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
-      // Try to parse JSON response
       let result;
       try {
         result = await response.json();
       } catch (jsonError) {
-        // Handle cases where response is not valid JSON
         const text = await response.text();
         throw new Error(`Response is not valid JSON: ${text}`);
       }

@@ -3,15 +3,10 @@ const cors = require('cors');
 const axios = require('axios');
 const app = express();
 
-app.use(cors()); // Apply CORS globally
-app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(cors()); 
+app.use(express.json()); 
 
-// Define GET route for testing
-app.get('/api', (req, res) => {
-  res.json({ user: ['user', 'user23', 'user3'] });
-});
-
-// Define POST route
+// POST 
 app.post('/add', async (req, res) => {
   try {
     // Post data to external webhook
