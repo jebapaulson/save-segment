@@ -136,41 +136,42 @@ const Segments = () => {
       setIsAdding(false);
     }
   };
+  
 
   const handleValues = (e, component) => {
     e.preventDefault();
   };
 
   const onSubmit = async (data) => {
-    console.log("dat",data);
-    // try {
-    //   const response = await fetch('http://localhost:5000/add', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
+    console.log("data",data);
+    try {
+      const response = await fetch('http://localhost:5000/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
   
-    //   // Check if the response status is OK
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! Status: ${response.status}`);
-    //   }
+      // Check if the response status is OK
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
   
-    //   // Try to parse JSON response
-    //   let result;
-    //   try {
-    //     result = await response.json();
-    //   } catch (jsonError) {
-    //     // Handle cases where response is not valid JSON
-    //     const text = await response.text();
-    //     throw new Error(`Response is not valid JSON: ${text}`);
-    //   }
+      // Try to parse JSON response
+      let result;
+      try {
+        result = await response.json();
+      } catch (jsonError) {
+        // Handle cases where response is not valid JSON
+        const text = await response.text();
+        throw new Error(`Response is not valid JSON: ${text}`);
+      }
   
-    //   console.log(result);
-    // } catch (error) {
-    //   console.error('Error submitting form data:', error);
-    // }
+      console.log(result);
+    } catch (error) {
+      console.error('Error submitting form data:', error);
+    }
   };
   
   
@@ -304,17 +305,3 @@ const Segments = () => {
 };
 
 export default Segments;
-
-
-
-
-
-
-
-
-
-
-// const Segments =()=>{
-//     return<Box>jeba</Box>
-// }
-// export default Segments;
